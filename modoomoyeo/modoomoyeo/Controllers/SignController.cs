@@ -90,5 +90,10 @@ namespace Ducademy.Controllers
                 CookieAuthenticationDefaults.AuthenticationScheme);
             return Redirect("/");
         }
+
+        public IActionResult Myinfo()
+        {
+            return View();
+        }
     }
 }
