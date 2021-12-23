@@ -3,14 +3,9 @@ using modoomoyeo.Database;
 using System.Web;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Ducademy.Controllers
 {
@@ -28,12 +23,33 @@ namespace Ducademy.Controllers
 
         [HttpPost]
         [Route("/Sign/Signin/Post")]
-        public IActionResult SigninProc()
+        public async Task<IActionResult> SigninProc()
         {
             UserQurey db = HttpContext.RequestServices.GetService(typeof(UserQurey)) as UserQurey;
             Userdata userdata = new Userdata(Request.Form["email"], Request.Form["pw"], null);
-            return Redirect($"/Sign/result?msg={HttpUtility.UrlEncode(db.signin(userdata)? "true" : "false")}" +
+            bool result = db.signin(userdata);
+            if(result)
+            { 
+                var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme,
+                    ClaimTypes.Name, ClaimTypes.Role);  
+                identity.AddClaim(new Claim(ClaimTypes.Email, db.findData(userdata.Email, "Email")));
+                identity.AddClaim(new Claim(ClaimTypes.Name, db.findData(userdata.Email, "Name")));
+                identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, db.findData(userdata.Email, "Email")));
+                 
+                var principal = new ClaimsPrincipal(identity);
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties
+                {
+                    IsPersistent = false,
+                    ExpiresUtc = DateTime.UtcNow,
+                    AllowRefresh = true
+                });
+                return Redirect("/");
+            }
+            else
+            {
+                return Redirect($"/Sign/result?msg={HttpUtility.UrlEncode("false")}" +
                 $"&begin=login");
+            }
         }
 
         public IActionResult Signup()

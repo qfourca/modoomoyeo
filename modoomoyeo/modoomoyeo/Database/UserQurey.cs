@@ -81,6 +81,26 @@ namespace modoomoyeo.Database
             return ret;
         }
         //로그인 함수 로그인에 성공하면 true를 반환
+        public string findData(string primary_key, string datatype)
+        {
+            string SQLqurey = $"select {datatype} from user where email = '{primary_key}'";
+            string ret = null;
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand command = new MySqlCommand(SQLqurey, conn);
+                using (var reader = command.ExecuteReader())
+                {
+                    if(reader.Read())
+                    {
+                        ret = reader.GetString(datatype);
+                    }
+                }
+                conn.Close();
+            }
+            return ret;
+        }
+        //이메을을 가지고 특정을 찾는 함수
         private bool exist(string type, string name)
         {
             bool ret;
