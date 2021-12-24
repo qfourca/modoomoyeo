@@ -30,6 +30,9 @@ namespace Ducademy
             services.Add(new ServiceDescriptor(typeof(UserQurey), new UserQurey(
                 Configuration.GetConnectionString("DefaultConnection"))));
 
+            services.Add(new ServiceDescriptor(typeof(ScheduleQurey), new ScheduleQurey(
+                Configuration.GetConnectionString("DefaultConnection"))));
+
             services.AddAuthentication(options =>
             {
                 options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;

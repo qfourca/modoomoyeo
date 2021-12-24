@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Schedule";
+}
+
+@model List<modoomoyeo.Database.ScheduleData>
+
+<ul>
+@foreach (var data in @Model)
+{
+    <li>@data.name  @data.contents  @data.owner </li>
+}
+</ul>

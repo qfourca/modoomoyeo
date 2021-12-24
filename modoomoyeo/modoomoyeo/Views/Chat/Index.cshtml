@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "List";
+}
+
+@model List<string>
+
+<ul>
+@foreach (var data in @Model)
+{
+    <li>
+    <form method = 'post' action='/Chat/Chatting'>
+        <button type="submit" name="name" value="@data">@data</button>
+    </form>
+    </li>
+}
+</ul>

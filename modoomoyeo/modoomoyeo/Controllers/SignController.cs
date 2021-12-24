@@ -35,12 +35,13 @@ namespace Ducademy.Controllers
                 identity.AddClaim(new Claim(ClaimTypes.Email, db.findData(userdata.Email, "Email")));
                 identity.AddClaim(new Claim(ClaimTypes.Name, db.findData(userdata.Email, "Name")));
                 identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, db.findData(userdata.Email, "Email")));
-                 
+                //identity.AddClaim(new Claim("LastCheckDateTime", DateTime.UtcNow.ToString("yyyyMMddHHmmss")));
+                Console.WriteLine("Login Sucess" + db.findData(userdata.Email, "Name"));
                 var principal = new ClaimsPrincipal(identity);
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties
                 {
                     IsPersistent = false,
-                    ExpiresUtc = DateTime.UtcNow,
+                    ExpiresUtc = DateTime.UtcNow.AddHours(4),
                     AllowRefresh = true
                 });
                 return Redirect("/");
@@ -80,6 +81,18 @@ namespace Ducademy.Controllers
                 ViewData["result"] = msg == "true" ? "login success" : "login fail";
             else
                 ViewData["result"] = msg;
+            return View();
+        }
+
+        public async Task<IActionResult> SignOut()
+        {
+            await HttpContext.SignOutAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme);
+            return Redirect("/");
+        }
+
+        public IActionResult Myinfo()
+        {
             return View();
         }
     }
