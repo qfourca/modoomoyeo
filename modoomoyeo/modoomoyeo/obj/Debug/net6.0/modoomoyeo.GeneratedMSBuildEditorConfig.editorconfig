@@ -15,12 +15,16 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\modoomoyeo\modoomoyeo\modoomoyeo
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/modoomoyeo/modoomoyeo/modoomoyeo/Views/Chat/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/modoomoyeo/modoomoyeo/modoomoyeo/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/modoomoyeo/modoomoyeo/modoomoyeo/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[D:/modoomoyeo/modoomoyeo/modoomoyeo/Views/Home/Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTY2hlZHVsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/modoomoyeo/modoomoyeo/modoomoyeo/Views/Shared/Error.cshtml]

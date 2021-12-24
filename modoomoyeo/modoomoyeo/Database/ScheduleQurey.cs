@@ -1,17 +1,43 @@
 ﻿using MySql.Data.MySqlClient;
+using System;
 
 namespace modoomoyeo.Database
 {
-    public class UserQurey : DBConnnection
+    public class ScheduleQurey : DBConnnection
     {
-        public UserQurey(string connectionString) : base(connectionString)
+        public ScheduleQurey(string connectionString) : base(connectionString)
         {
         }
 
-        public List<Userdata> GetData()
+        public string insertSchedule(ScheduleData schedule)
         {
-            List<Userdata> List = new List<Userdata>();
-            String SQLqurey = "SELECT * from User";
+            string SQLqurey = $"insert into schedule" +
+                $" values('{schedule.name}', '{schedule.owner}', '{schedule.contents}'," +
+                $"'{schedule.begin.ToString("yyyy/MM/dd HH/mm/ss")}','{schedule.end.ToString("yyyy/MM/dd HH/mm/ss")}'," +
+                $" '{schedule.access}')";
+            using (MySqlConnection conn = GetConnection())
+            {
+                try
+                {
+                    conn.Open();
+                    MySqlCommand command = new MySqlCommand(SQLqurey, conn);
+                    Console.WriteLine("Schedule insert success" + (command.ExecuteNonQuery() == 1 ?
+                        "success" : "fail"));
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine("DB connecttion Fail");
+                    Console.WriteLine(exception.ToString());
+                }
+                conn.Close();
+                return "OK";
+            }
+        }
+
+        public List<ScheduleData> scheduleDatas()
+        {
+            List<ScheduleData> scheduleDatas = new List<ScheduleData>();
+            string SQLqurey = $"SELECT * from schedule;";
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
@@ -20,49 +46,52 @@ namespace modoomoyeo.Database
                 {
                     while (reader.Read())
                     {
-                        List.Add(new Userdata(
-                            reader.GetString("Email"),
+                        scheduleDatas.Add(new ScheduleData(
                             reader.GetString("name"),
-                            reader.GetString("password")
-                        ));
+                            reader.GetString("owner"),
+                            reader.GetString("contents"),
+                            DateTime.Parse(reader.GetString("begintime")),
+                            DateTime.Parse(reader.GetString("endtime")),
+                            reader.GetInt32("access")
+                         ));
                     }
                 }
                 conn.Close();
-                return List;
             }
+            return scheduleDatas;
         }
-
-
-        public string signup(Userdata userdata)
+        public List<ScheduleData> scheduleDatas(string owner)
         {
-            if(exist("Email", userdata.Email))
+            List<ScheduleData> scheduleDatas = new List<ScheduleData>();
+            string SQLqurey = $"SELECT * from schedule where owner = '{owner}';";
+            using (MySqlConnection conn = GetConnection())
             {
-                return "Email Already Exist";
-            }
-            else
-            {
-                string SQLqurey = $"insert into user values(" +
-                    $"'{userdata.Email}','{convertPassword(userdata.Password)}','{userdata.Name}')";
-                using (MySqlConnection conn = GetConnection())
+                conn.Open();
+                MySqlCommand command = new MySqlCommand(SQLqurey, conn);
+                using (var reader = command.ExecuteReader())
                 {
-                    try
+                    while (reader.Read())
                     {
-                        conn.Open();
-                        MySqlCommand command = new MySqlCommand(SQLqurey, conn);
-                        Console.WriteLine("Sign up " + (command.ExecuteNonQuery() == 1 ?
-                            "success" : "fail"));
+                        scheduleDatas.Add(new ScheduleData(
+                            reader.GetString("name"),
+                            reader.GetString("owner"),
+                            reader.GetString("contents"),
+                            DateTime.Parse(reader.GetString("begintime")),
+                            DateTime.Parse(reader.GetString("endtime")),
+                            reader.GetInt32("access")
+                         ));
                     }
-                    catch(Exception exception)
-                    {
-                        Console.WriteLine("DB connecttion Fail");
-                        Console.WriteLine(exception.ToString());
-                    }
-                    conn.Close();
-                    return "OK";
                 }
+                conn.Close();
             }
+            return scheduleDatas;
         }
-        //회원가입 함수 회원가입에 성공하면 문자열 OK를 반환
+
+        //public List<ScheduleData> scheduleDatas(string owner, string name)
+        //{
+
+        //}
+
         public bool signin(Userdata userdata)
         {
             bool ret;
@@ -91,7 +120,7 @@ namespace modoomoyeo.Database
                 MySqlCommand command = new MySqlCommand(SQLqurey, conn);
                 using (var reader = command.ExecuteReader())
                 {
-                    if(reader.Read())
+                    if (reader.Read())
                     {
                         ret = reader.GetString(datatype);
                     }
@@ -101,24 +130,6 @@ namespace modoomoyeo.Database
             return ret;
         }
         //이메을을 가지고 특정을 찾는 함수
-        public List<string> findUserAll()
-        {
-            List<string> ret = new List<string>();
-            string SQLqurey = "select name from user;";
-            using (MySqlConnection conn = GetConnection())
-            {
-                conn.Open();
-                MySqlCommand command = new MySqlCommand(SQLqurey, conn);
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                        ret.Add(new string(reader.GetString("name")));
-                conn.Close();
-                }
-            }
-            return ret;
-        }
-        //모든 유저를 반환
         private bool exist(string type, string name)
         {
             bool ret;
@@ -134,7 +145,7 @@ namespace modoomoyeo.Database
                 conn.Close();
             }
             return ret;
-        } 
+        }
         //특정 타입에 특정 이름을 가진 것이 테이블에 존재하는지 검사하는 함수
         private string convertPassword(string password)
         {

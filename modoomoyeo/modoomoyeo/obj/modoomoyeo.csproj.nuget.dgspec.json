@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Project\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo.csproj": {}
+    "D:\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo.csproj": {}
   },
   "projects": {
-    "D:\\Project\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo.csproj": {
+    "D:\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo.csproj",
+        "projectUniqueName": "D:\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo.csproj",
         "projectName": "modoomoyeo",
-        "projectPath": "D:\\Project\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo.csproj",
+        "projectPath": "D:\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo.csproj",
         "packagesPath": "C:\\Users\\DGSW\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\modoomoyeo\\modoomoyeo\\modoomoyeo\\obj\\",
+        "outputPath": "D:\\modoomoyeo\\modoomoyeo\\modoomoyeo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\DGSW\\AppData\\Roaming\\NuGet\\NuGet.Config",

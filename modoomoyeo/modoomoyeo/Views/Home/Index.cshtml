@@ -2,7 +2,8 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<form method = 'post' action='/Schedule/Post'>
+    <input type="text" name="title" class="form-control" placeholder="제목"/>
+    <input type="text" name="contents" class="form-control" placeholder="내용"/>
+    <button type="submit">insert</button>
+</form>

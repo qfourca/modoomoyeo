@@ -18,11 +18,28 @@ namespace modoomoyeo.Controllers
         {
             return View();
         }
-
-        public IActionResult Privacy()
+        [HttpPost]
+        [Route("/Schedule/Post")]
+        public IActionResult scheduleInsert()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                ScheduleData schedule = new ScheduleData(Request.Form["title"],
+                                                          User.Identity.Name,
+                                                          Request.Form["contents"],
+                                                          DateTime.Now,
+                                                          10
+                                                         );
+                ScheduleQurey db = HttpContext.RequestServices.GetService(typeof(ScheduleQurey)) as ScheduleQurey;
+                db.insertSchedule(schedule);
+            }
+            return Redirect(User.Identity.IsAuthenticated ? "/Home/Schedule" : "/Sign/Signin");
+        }
 
-            return View();
+        public IActionResult Schedule()
+        {
+            ScheduleQurey db = HttpContext.RequestServices.GetService(typeof(ScheduleQurey)) as ScheduleQurey;
+            return View(db.scheduleDatas());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
