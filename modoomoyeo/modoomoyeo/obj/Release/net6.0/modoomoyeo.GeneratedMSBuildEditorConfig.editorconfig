@@ -8,11 +8,11 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = modoomoyeo
 build_property.RootNamespace = modoomoyeo
-build_property.ProjectDir = C:\Users\Administrator\source\repos\modoomoyeo\modoomoyeo\modoomoyeo\
+build_property.ProjectDir = C:\Users\Administrator\Source\Repos\modoomoyeo\modoomoyeo\modoomoyeo\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Administrator\source\repos\modoomoyeo\modoomoyeo\modoomoyeo
+build_property.MSBuildProjectDirectory = C:\Users\Administrator\Source\Repos\modoomoyeo\modoomoyeo\modoomoyeo
 build_property._RazorSourceGeneratorDebug = 
 
 [C:/Users/Administrator/source/repos/modoomoyeo/modoomoyeo/modoomoyeo/Views/Home/Index.cshtml]
