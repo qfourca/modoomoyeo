@@ -6,6 +6,8 @@ using System.Linq;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using System;
+using System.IO;
 
 namespace modoomoyeo.Controllers
 {
@@ -21,8 +23,10 @@ namespace modoomoyeo.Controllers
         }
 
         [HttpPost]
-        [Route("/Chat/Chatting")]
-
+        [Route("/CHat/Chatting")]
+        public IActionResult ChattingRequest()
+        {            
+            return View("Chating");
+        }
     }
-        
 }

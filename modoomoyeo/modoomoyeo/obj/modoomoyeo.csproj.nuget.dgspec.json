@@ -1,31 +1,17 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
-    "C:\\Users\\Administrator\\Source\\Repos\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo.csproj": {}
+    "D:\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrator\\Source\\Repos\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo.csproj": {
+    "D:\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\Source\\Repos\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo.csproj",
+        "projectUniqueName": "D:\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo.csproj",
         "projectName": "modoomoyeo",
-        "projectPath": "C:\\Users\\Administrator\\Source\\Repos\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo.csproj",
+        "projectPath": "D:\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\Source\\Repos\\modoomoyeo\\modoomoyeo\\modoomoyeo\\obj\\",
-=======
-    "D:\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo.csproj": {}
-  },
-  "projects": {
-    "D:\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo.csproj",
-        "projectName": "modoomoyeo",
-        "projectPath": "D:\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo.csproj",
-        "packagesPath": "C:\\Users\\DGSW\\.nuget\\packages\\",
-        "outputPath": "D:\\modoomoyeo\\modoomoyeo\\modoomoyeo\\obj\\",
->>>>>>> 90ba5536e7fcdfbe99e4ac136854f4290decc15f
+        "outputPath": "D:\\modoomoyeo\\modoomoyeo\\modoomoyeo\\modoomoyeo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -54,6 +40,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.SignalR.Common": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
             "MySql.Data": {
               "target": "Package",
               "version": "[8.0.27, )"

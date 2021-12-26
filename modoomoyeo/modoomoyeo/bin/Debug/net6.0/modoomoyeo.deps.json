@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "modoomoyeo/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.SignalR.Common": "6.0.1",
           "MySql.Data": "8.0.27"
         },
         "runtime": {
@@ -25,7 +26,7 @@
       "Google.Protobuf/3.14.0": {
         "dependencies": {
           "System.Memory": "4.5.4",
-          "System.Runtime.CompilerServices.Unsafe": "5.0.0"
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         },
         "runtime": {
           "lib/netstandard2.0/Google.Protobuf.dll": {
@@ -68,6 +69,50 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Connections.Abstractions/6.0.1": {
+        "dependencies": {
+          "Microsoft.Extensions.Features": "6.0.1",
+          "System.IO.Pipelines": "6.0.1"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.AspNetCore.Connections.Abstractions.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.121.56714"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.SignalR.Common/6.0.1": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Connections.Abstractions": "6.0.1",
+          "Microsoft.Extensions.Options": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.AspNetCore.SignalR.Common.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.121.56714"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/6.0.0": {},
+      "Microsoft.Extensions.Features/6.0.1": {
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Features.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.121.56714"
+          }
+        }
+      },
+      "Microsoft.Extensions.Options/6.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
+          "Microsoft.Extensions.Primitives": "6.0.0"
+        }
+      },
+      "Microsoft.Extensions.Primitives/6.0.0": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        }
+      },
       "Microsoft.NETCore.Platforms/3.1.0": {},
       "Microsoft.Win32.SystemEvents/4.7.0": {
         "dependencies": {
@@ -95,7 +140,7 @@
           "K4os.Compression.LZ4.Streams": "1.2.6",
           "System.Buffers": "4.5.1",
           "System.Configuration.ConfigurationManager": "4.4.1",
-          "System.Runtime.CompilerServices.Unsafe": "5.0.0",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
           "System.Security.Permissions": "4.7.0",
           "System.Text.Encoding.CodePages": "4.4.0"
         },
@@ -152,8 +197,16 @@
           }
         }
       },
+      "System.IO.Pipelines/6.0.1": {
+        "runtime": {
+          "lib/net6.0/System.IO.Pipelines.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.121.56705"
+          }
+        }
+      },
       "System.Memory/4.5.4": {},
-      "System.Runtime.CompilerServices.Unsafe/5.0.0": {},
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
       "System.Security.AccessControl/4.7.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0",
@@ -256,6 +309,48 @@
       "path": "k4os.hash.xxhash/1.0.6",
       "hashPath": "k4os.hash.xxhash.1.0.6.nupkg.sha512"
     },
+    "Microsoft.AspNetCore.Connections.Abstractions/6.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CSo9SySIaSL8pY2xaafkQ0MCihVuRbUsXyzuVQC0Eoh4VrATjiUdZ1mjD7efZ+ldTzHx/Y6W55sW8kQzBbSgyg==",
+      "path": "microsoft.aspnetcore.connections.abstractions/6.0.1",
+      "hashPath": "microsoft.aspnetcore.connections.abstractions.6.0.1.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.SignalR.Common/6.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gcJjpxiAnDGzKOTaNRCjQrN6oIK1xmtnypM2ZxozcyVcKEYqMzOVM7oe0ODUckmEO45VWcxt92iiwC5Hr+usnw==",
+      "path": "microsoft.aspnetcore.signalr.common/6.0.1",
+      "hashPath": "microsoft.aspnetcore.signalr.common.6.0.1.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xlzi2IYREJH3/m6+lUrQlujzX8wDitm4QGnUu6kUXTQAWPuZY8i+ticFJbzfqaetLA6KR/rO6Ew/HuYD+bxifg==",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/6.0.0",
+      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Features/6.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Mqte8GokrfwwSjD0dUJUSYIQp6aEYG05fZICLTmnPa/uH999FqlS00CLgqGRT8V+PvZfv318ywQbQ1e0pgCZEg==",
+      "path": "microsoft.extensions.features/6.0.1",
+      "hashPath": "microsoft.extensions.features.6.0.1.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Options/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dzXN0+V1AyjOe2xcJ86Qbo233KHuLEY0njf/P2Kw8SfJU+d45HNS2ctJdnEnrWbM9Ye2eFgaC5Mj9otRMU6IsQ==",
+      "path": "microsoft.extensions.options/6.0.0",
+      "hashPath": "microsoft.extensions.options.6.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Primitives/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9+PnzmQFfEFNR9J2aDTfJGGupShHjOuGw4VUv+JB044biSHrnmCIMD+mJHmb2H7YryrfBEXDurxQ47gJZdCKNQ==",
+      "path": "microsoft.extensions.primitives/6.0.0",
+      "hashPath": "microsoft.extensions.primitives.6.0.0.nupkg.sha512"
+    },
     "Microsoft.NETCore.Platforms/3.1.0": {
       "type": "package",
       "serviceable": true,
@@ -298,6 +393,13 @@
       "path": "system.drawing.common/4.7.0",
       "hashPath": "system.drawing.common.4.7.0.nupkg.sha512"
     },
+    "System.IO.Pipelines/6.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1j1pZX1ICzEyjafyssU3BzWVxUsaN3zq0wEmGKj3bxINC6NkmS30eEVuZ7k/QX2UKYNCaUch6g46taYKxcpFtw==",
+      "path": "system.io.pipelines/6.0.1",
+      "hashPath": "system.io.pipelines.6.0.1.nupkg.sha512"
+    },
     "System.Memory/4.5.4": {
       "type": "package",
       "serviceable": true,
@@ -305,12 +407,12 @@
       "path": "system.memory/4.5.4",
       "hashPath": "system.memory.4.5.4.nupkg.sha512"
     },
-    "System.Runtime.CompilerServices.Unsafe/5.0.0": {
+    "System.Runtime.CompilerServices.Unsafe/6.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ZD9TMpsmYJLrxbbmdvhwt9YEgG5WntEnZ/d1eH8JBX9LBp+Ju8BSBhUGbZMNVHHomWo2KVImJhTDl2hIgw/6MA==",
-      "path": "system.runtime.compilerservices.unsafe/5.0.0",
-      "hashPath": "system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+      "sha512": "sha512-/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
+      "path": "system.runtime.compilerservices.unsafe/6.0.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
     },
     "System.Security.AccessControl/4.7.0": {
       "type": "package",

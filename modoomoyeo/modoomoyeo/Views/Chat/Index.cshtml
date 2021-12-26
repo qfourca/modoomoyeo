@@ -1,15 +1,15 @@
 ﻿@{
     ViewData["Title"] = "List";
 }
-
-@model List<string>
+@using modoomoyeo.Database;
+@model List<Userdata>
 
 <ul>
 @foreach (var data in @Model)
 {
     <li>
     <form method = 'post' action='/Chat/Chatting'>
-        <button type="submit" name="name" value="@data">@data</button>
+        <button type="submit" name="id" value="@data.id">@data.Name</button>
     </form>
     </li>
 }

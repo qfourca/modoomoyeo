@@ -3,13 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using modoomoyeo.Database;
+using SignalRChat.Hubs;
 //using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace Ducademy
@@ -32,6 +27,10 @@ namespace Ducademy
 
             services.Add(new ServiceDescriptor(typeof(ScheduleQurey), new ScheduleQurey(
                 Configuration.GetConnectionString("DefaultConnection"))));
+
+            services.Add(new ServiceDescriptor(typeof(ChatingQurey), new ChatingQurey(
+                Configuration.GetConnectionString("DefaultConnection"))));
+
 
             services.AddAuthentication(options =>
             {
@@ -66,7 +65,7 @@ namespace Ducademy
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-                //endpoints.MapHub<ChessHub>("/chess_signalr");
+                endpoints.MapHub<ChatHub>("/chathub");
                 //endpoints.MapHub<AlertHub>("/alerm_signalr");
             });
 
