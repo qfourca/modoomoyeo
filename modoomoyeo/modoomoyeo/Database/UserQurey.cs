@@ -41,7 +41,7 @@ namespace modoomoyeo.Database
             }
             else
             {
-                string SQLqurey = $"insert into user values(" +
+                string SQLqurey = $"insert into user (Email, password, name)values(" +
                     $"'{userdata.Email}','{convertPassword(userdata.Password)}','{userdata.Name}')";
                 using (MySqlConnection conn = GetConnection())
                 {
@@ -101,10 +101,10 @@ namespace modoomoyeo.Database
             return ret;
         }
         //이메을을 가지고 특정을 찾는 함수
-        public List<string> findUserAll()
+        public List<Userdata> findUserAll()
         {
-            List<string> ret = new List<string>();
-            string SQLqurey = "select name from user;";
+            List<Userdata> ret = new List<Userdata>();
+            string SQLqurey = "select id, name from user;";
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
@@ -112,7 +112,13 @@ namespace modoomoyeo.Database
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
-                        ret.Add(new string(reader.GetString("name")));
+                    {
+                        ret.Add(new Userdata(
+                            reader.GetInt32("id"),
+                            null,
+                            null,
+                            reader.GetString("name")));
+                    }
                 conn.Close();
                 }
             }

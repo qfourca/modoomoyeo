@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "modoomoyeo", "modoomoyeo\modoomoyeo.csproj", "{B11F1243-2FFB-479F-A592-AE5ABE3B2B75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "modoomoyeo", "modoomoyeo\modoomoyeo.csproj", "{B11F1243-2FFB-479F-A592-AE5ABE3B2B75}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3B6B0F98-E7FD-40E8-AD84-EC8A5FBE082E}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

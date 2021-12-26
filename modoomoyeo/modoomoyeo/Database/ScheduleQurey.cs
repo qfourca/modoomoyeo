@@ -13,7 +13,7 @@ namespace modoomoyeo.Database
         {
             string SQLqurey = $"insert into schedule" +
                 $" values('{schedule.name}', '{schedule.owner}', '{schedule.contents}'," +
-                $"'{schedule.begin.ToString("yyyy/MM/dd HH/mm/ss")}','{schedule.end.ToString("yyyy/MM/dd HH/mm/ss")}'," +
+                $"'{schedule.begin:yyyy/MM/dd HH/mm/ss}','{schedule.end:yyyy/MM/dd HH/mm/ss}'," +
                 $" '{schedule.access}')";
             using (MySqlConnection conn = GetConnection())
             {
@@ -157,12 +157,3 @@ namespace modoomoyeo.Database
         //비밀번호를 넣으면 암호화된 비밀번호를 반환하는 함수
     }
 }
-
-/*
-try
-{
-    conn.Open();
-    MySqlCommand command = new MySqlCommand(SQLqurey, conn);
-    if(command.ExecuteNonQuery() == 1)
-}
-*/
