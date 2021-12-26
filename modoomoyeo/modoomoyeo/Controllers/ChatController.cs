@@ -20,9 +20,6 @@ namespace modoomoyeo.Controllers
             return View(db.findUserAll());
         }
 
-        [HttpPost]
-        [Route("/Chat/Chatting")]
-
     }
         
 }
