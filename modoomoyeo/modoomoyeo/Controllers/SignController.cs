@@ -32,11 +32,11 @@ namespace Ducademy.Controllers
             { 
                 var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme,
                     ClaimTypes.Name, ClaimTypes.Role);  
-                identity.AddClaim(new Claim(ClaimTypes.Email, db.findData(userdata.Email, "Email")));
                 identity.AddClaim(new Claim(ClaimTypes.Name, db.findData(userdata.Email, "Name")));
-                identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, db.findData(userdata.Email, "Email")));
                 identity.AddClaim(new Claim("LastCheckDateTime", DateTime.UtcNow.ToString("yyyyMMddHHmmss")));
-                Console.WriteLine("Login Sucess" + db.findData(userdata.Email, "Name"));
+                identity.AddClaim(new Claim("userid", db.findData(userdata.Email, "id")));
+
+                Console.WriteLine("Login Sucess " + db.findData(userdata.Email, "Name"));
                 var principal = new ClaimsPrincipal(identity);
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties
                 {
@@ -44,6 +44,7 @@ namespace Ducademy.Controllers
                     ExpiresUtc = DateTime.UtcNow.AddHours(4),
                     AllowRefresh = true
                 });
+                ViewData["Name"] = db.findData(userdata.Email, "Name");
                 return Redirect("/");
             }
             else

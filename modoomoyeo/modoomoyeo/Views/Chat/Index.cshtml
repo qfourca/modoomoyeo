@@ -5,6 +5,9 @@
 @model List<Userdata>
 
 <ul>
+<form method = 'post' action='/Chat/Chatting'>
+<li><button type="submit" name="id" value="0">ALL</button></li>
+</form>
 @foreach (var data in @Model)
 {
     <li>

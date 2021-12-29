@@ -1,35 +1,46 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using modoomoyeo.Database;
-using System.Threading.Tasks;
-using System.IO;
-using Microsoft.AspNetCore.Mvc;
-using System.Web;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
 
 namespace SignalRChat.Hubs
 {
     public class ChatHub : Hub
     {
-    public async Task SendMessage(string user, string message)
+        public Task JoinRoom(int roomId)
         {
-            ChatingQurey db = Context.GetHttpContext().RequestServices.GetService(typeof(ChatingQurey)) as ChatingQurey;
-            if (user == "logrequest")
+            return Groups.AddToGroupAsync(Context.ConnectionId, roomId.ToString());
+        }
+
+        public Task LeaveRoom(int roomId)
+        {
+            return Groups.RemoveFromGroupAsync(Context.ConnectionId, roomId.ToString());
+        }
+        public async Task SendMessage(int userid, int targetid, string message)
+        {
+            Console.Write(userid); Console.WriteLine(targetid);
+            ChatingQurey? db = Context.GetHttpContext().RequestServices.GetService(typeof(ChatingQurey)) as ChatingQurey;
+            int permission = db.findPermission(userid, targetid);
+            Console.WriteLine(permission);
+            if (permission == -1)
             {
-                Console.WriteLine(DateTime.MinValue.ToString());
-                List <Chatinglog> chatinglogs= db.findLog(DateTime.MinValue ,DateTime.Now, 0);
+                db.insertPermission(userid, targetid);
+                permission = db.findPermission(userid, targetid);
+            }
+            if (permission != 0)
+                await JoinRoom(permission);
+            if (message == "ALL")
+            {
+                List <Chatinglog> chatinglogs = db.findLog(DateTime.MinValue ,DateTime.Now, permission);
                 foreach (Chatinglog chatinglog in chatinglogs)
-                    Console.WriteLine(chatinglog.contents);
+                    await Clients.Caller.SendAsync("logMessage", chatinglog.ownerid, chatinglog.contents, chatinglog.time.ToString());
             }
             else
             {
-           
-                Chatinglog chatinglog = new Chatinglog(1, message, 0);
+                Chatinglog chatinglog = new Chatinglog(userid, message, permission);
                 db.insertLog(chatinglog);
-                await Clients.All.SendAsync("ReceiveMessage", user, message);
+                if(permission == 0)
+                    await Clients.Others.SendAsync("ReceiveMessage", userid, message);  
+                else
+                    await Clients.OthersInGroup(permission.ToString()).SendAsync("ReceiveMessage", userid, message);
             }
         }
     }

@@ -39,8 +39,9 @@ namespace Ducademy
                 options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             }).AddCookie(options =>
             {
-                options.LoginPath = "/login";
+                options.LoginPath = "/Sign/Signin";
             });
+
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -66,6 +67,7 @@ namespace Ducademy
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapHub<ChatHub>("/chathub");
+                endpoints.MapHub<ChatHub>("/stream");
                 //endpoints.MapHub<AlertHub>("/alerm_signalr");
             });
 

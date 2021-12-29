@@ -1,15 +1,50 @@
 ﻿@{
+    Layout = null;
     ViewData["Title"] = "Sign in";
 }
-<h1>@ViewData["Title"]</h1>
+<title>@ViewData["Title"]</title>
+@section Style{
 
-<div>
+}
+   <link href="~/css/sign/signin.css" rel="stylesheet" type="text/css">
+   <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"  rel="stylesheet" >
+<body>
+   <div class="box_align">
+         <form class="box" style="background-color:#ffffff" method = 'post' action='/Sign/Signin/Post'>
+              <img src="~/img/LOGO.png" width="250" height="250">
+              
+              <br>
+              <br>
+                        
+            <div class="field">
+              <div class="control">
+                <input class="input" type="email" name="email" placeholder="ID">
+              </div>
+            </div>
+            
+            <br>
+            
+            <div class="field">
+              <div class="control">
+                <input class="input" type="password" name="pw" placeholder="PASSWORD">
+              </div>
+            </div>
+            
+            <br>
+            <br>
+            <br>
+            <br>
+              
+            <button class="button is-fullwidth" style="background-color:#83B9BF" type="submit">Sign in</button>
+              
+            <br>
+              
+            <div>
+               Don't you have ID? <a asp-area="" asp-controller="Sign" asp-action="Signup">Sign up</a>
+             </div>
+              
+         </form>
+   </div>
+   
+</body>
 
-    <link rel="stylesheet" href="~/css/site.css" /> 
-    
-    <form method = 'post' action='/Sign/Signin/Post'>
-        email:<input type="text" name="email" class="form-control" placeholder="아이디를 입력하세요"/>
-        pw:<input type="password" name="pw" class="form-control" placeholder="비밀번호를 입력하세요"/>
-        <button type="submit">signin</button>
-    </form>
-</div>

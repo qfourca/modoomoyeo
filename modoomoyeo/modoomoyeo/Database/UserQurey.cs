@@ -81,9 +81,9 @@ namespace modoomoyeo.Database
             return ret;
         }
         //로그인 함수 로그인에 성공하면 true를 반환
-        public string findData(string primary_key, string datatype)
+        public string findData(string email, string datatype)
         {
-            string SQLqurey = $"select {datatype} from user where email = '{primary_key}'";
+            string SQLqurey = $"select {datatype} from user where email = '{email}'";
             string ret = null;
             using (MySqlConnection conn = GetConnection())
             {
@@ -100,7 +100,45 @@ namespace modoomoyeo.Database
             }
             return ret;
         }
-        //이메을을 가지고 특정을 찾는 함수
+        public string idToName(int id)
+        {
+            string SQLqurey = $"select name from user where id = '{id}'";
+            string ret = null;
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand command = new MySqlCommand(SQLqurey, conn);
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        ret = reader.GetString("name");
+                    }
+                }
+                conn.Close();
+            }
+            return ret;
+        }
+        public int nameToId(string name)
+        {
+            string SQLqurey = $"select id from user where name = '{name}'";
+            int ret = 0;
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand command = new MySqlCommand(SQLqurey, conn);
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        ret = reader.GetInt32("id");
+                    }
+                }
+                conn.Close();
+            }
+            return ret;
+        }
+        //이메일을 가지고 특정을 찾는 함수
         public List<Userdata> findUserAll()
         {
             List<Userdata> ret = new List<Userdata>();

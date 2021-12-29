@@ -1,12 +1,49 @@
 ﻿@{
+    Layout = null;
     ViewData["Title"] = "Sign up";
 }
-<h1>@ViewData["Title"]</h1>
-
-    <form method = 'post' action='/Sign/Signup/Post'>
-        email:<input type="text" name="email" class="form-control" placeholder="아이디를 입력하세요"/>
-        pw:<input type="password" name="pw" class="form-control" placeholder="비밀번호를 입력하세요"/>
-        pw:<input type="password" name="repw" class="form-control" placeholder="비밀번호를 다시 입력하세요"/>
-        name:<input type="text" name="name" class="form-control" placeholder="이름을 입력하세요"/>
-        <button type="submit">signin</button>
-    </form>
+<title>@ViewData["Title"]</title>
+<link href="~/css/sign/signin.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"  rel="stylesheet" >
+<body>
+   <div class="box_align">
+         <form class="box" style="background-color:#ffffff" form method = 'post' action='/Sign/Signup/Post'>
+              <img src="~/img/LOGO.png" width="250" height="250">
+              
+              <br>
+              <br>
+                        
+            <div class="field">
+              <div class="control">
+                <input class="input" type="email" name="email" placeholder="ID">
+              </div>
+            </div>
+            
+            <div class="field">
+              <div class="control">
+                <input class="input" type="password" name="pw" placeholder="PASSWORD">
+              </div>
+            </div>
+            
+            <div class="field">
+              <div class="control">
+                <input class="input" type="password" name="repw" placeholder="PASSWORD CHECK">
+              </div>
+            </div>
+            
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" name="name" placeholder="NAME">
+              </div>
+            </div>
+            
+            <br>
+            <br>
+            <br>
+              
+            <button class="button is-fullwidth" style="background-color:#83B9BF">Sign up</button>             
+             <br>
+         </form>
+   </div>
+   
+</body>

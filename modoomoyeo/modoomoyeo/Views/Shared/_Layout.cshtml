@@ -1,79 +1,93 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/css/site.css">
+    @await RenderSectionAsync("Style", required: false)
     <title>@ViewData["Title"] - modoomoyeo</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/modoomoyeo.styles.css" asp-append-version="true" />
-    @await RenderSectionAsync("Designs", required: false)
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                    @if(User.Identity.IsAuthenticated)
+
+    <body id="body-pd">
+        <div class="l-navbar" id="navbar">
+            <nav class="nav">
+                <div>
+                    <div class="nav__brand">
+                        <!-- 아이콘 -->
+                        <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
+                        <!-- 넘기는 거 넣어 -->
+                        <a href="#" class="nav__logo">@User.Identity.Name</a>
+                    </div>
+                    <div class="nav__list">
+                    @if (User.Identity.IsAuthenticated)
                     {
-                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@User.Identity.Name</a>
+                        <div>                   
+                            <!-- 누르면 이동 -->
+                            <a class="nav__link" asp-area="" asp-controller="Home" asp-action="Index">
+                                <ion-icon name="home-outline" class="nav__icon"></ion-icon>
+                                <span class="nav_name">Insert</span>
+                            </a>
+                        </div>
+
+                        <!-- 누르면 이동 -->
+                        <a class="nav__link" asp-area="" asp-controller="Home" asp-action="Schedule">
+                            <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
+                            <span class="nav_name">Schedule</span>
+                        </a>
+
+
+                        <!-- 누르면 이동 -->
+                        <a class="nav__link" asp-area="" asp-controller="Chat" asp-action="Index">
+                            <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
+                            <span class="nav_name">Chating</span> 
+                        </a>
+
+                        <!-- 누르면 이동 -->
+                        <a class="nav__link" asp-area="" asp-controller="Canvas" asp-action="Index">
+                            <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+                            <span class="nav_name">Canvas</span>
+                        </a>
                     }
                     else
                     {
-                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Login Please</a>
-                    }
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">insert</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Schedule">Schedule</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Chat" asp-action="Index">Chat</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Sign" asp-action="Signout">Signout</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Sign" asp-action="Myinfo">My Info</a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Sign" asp-action="Signin">Signin</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Sign" asp-action="Signup">Signup</a>
-                            </li>
-                        }
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+                        <a class="nav__link" asp-area="" asp-controller="Sign" asp-action="Signin">
+                            <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
+                            <span class="nav_name">Signin</span>
+                        </a>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - modoomoyeo - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+                        <!-- 누르면 이동 -->
+                        <a class="nav__link" asp-area="" asp-controller="Sign" asp-action="Signout">
+                            <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
+                            <span class="nav_name">Signout</span> 
+                        </a>
+                    }
+                    </div>
+
+
+
+                    <a class="nav__link" asp-area="" asp-controller="Sign" asp-action="Signout">
+                        <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
+                        <span class="nav_name">Signout</span>
+                    </a>
+                </div>
+            </nav>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
+
+
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+        <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+        <script src="~/js/site.js"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+    </body>
 </html>
+
+

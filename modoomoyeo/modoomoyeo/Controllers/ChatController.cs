@@ -21,15 +21,14 @@ namespace modoomoyeo.Controllers
             UserQurey db = HttpContext.RequestServices.GetService(typeof(UserQurey)) as UserQurey;
             return View(db.findUserAll());
         }
-
-<<<<<<< HEAD
-=======
         [HttpPost]
-        [Route("/CHat/Chatting")]
+        [Route("/Chat/Chatting")]
         public IActionResult ChattingRequest()
-        {            
+        {
+            Console.WriteLine("debug");
+            ViewData["Target"] = Request.Form["id"];
             return View("Chating");
         }
->>>>>>> 0ce342a128676485c13ab9183074185d0bd18c1f
+
     }
 }

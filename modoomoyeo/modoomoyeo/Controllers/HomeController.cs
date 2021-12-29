@@ -16,6 +16,7 @@ namespace modoomoyeo.Controllers
 
         public IActionResult Index()
         {
+            Console.WriteLine("debug2");
             return View();
         }
         [HttpPost]
