@@ -31,6 +31,9 @@ namespace Ducademy
             services.Add(new ServiceDescriptor(typeof(ChatingQurey), new ChatingQurey(
                 Configuration.GetConnectionString("DefaultConnection"))));
 
+            services.Add(new ServiceDescriptor(typeof(PostQurey), new PostQurey(
+                Configuration.GetConnectionString("DefaultConnection"))));
+
 
             services.AddAuthentication(options =>
             {
@@ -67,7 +70,7 @@ namespace Ducademy
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapHub<ChatHub>("/chathub");
-                endpoints.MapHub<ChatHub>("/stream");
+                endpoints.MapHub<CanvasHub>("/canvasHub");
                 //endpoints.MapHub<AlertHub>("/alerm_signalr");
             });
 

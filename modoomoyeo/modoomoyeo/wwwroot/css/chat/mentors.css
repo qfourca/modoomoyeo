@@ -1,0 +1,48 @@
+﻿@charset "UTF-8";
+
+.login_register_body {
+    background-color: #634F47;
+    text-align: center;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: static;
+    bottom: 100px;
+}
+
+.chat_bar_body {
+    background-color: #7A6C62;
+    text-align: center;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.chat {
+
+    position: absolute;
+    top: 16%;
+    left: 40%;
+    margin: 50px 0 0 -150px
+}
+
+table {
+    width: 500px;
+}
+
+th, td {
+    text-align: center;
+    vertical-align: middle;
+    width: 150px;
+}
+
+tr {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+img{
+    text-align: center;
+    width: 30px;
+    height: 10px;
+}

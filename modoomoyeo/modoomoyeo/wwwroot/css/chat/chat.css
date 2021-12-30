@@ -117,3 +117,7 @@ input[type="text"] {
 input[type="text"]::placeholder {
     color: #a3a2a2b9;
 }
+.frame{
+    backdrop-color:FFF3F0;
+    margin-left: 300px;
+}

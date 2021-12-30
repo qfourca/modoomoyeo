@@ -1,13 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Song+Myung&display=swap");
+
+
+* {
+    font-family: "Song Myung";
+}
+
 .container {
     clear: both;
     position: absolute;
-    left: 200px;
+
 }
+/* VARIABLES CSS */
+:root {
+    --nav--width: 92px;
+    /* Colores */
+    --first-color: #0c5df4;
+    --bg-color: #12192c;
+    --sub-color: #b6cefc;
+    --white-color: #fff;
+    /* Fuente y tipografia */
+    --body-font: 'Poppins', sans-serif;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    /* z index */
+    --z-fixed: 100;
+}
+
+/* BASE */
 *, ::before, ::after {
     box-sizing: border-box;
 }
 
 body {
+    background-color: #fff3f0;
     position: relative;
     margin: 0;
     padding: 2rem 0 0 6.75rem;
@@ -43,7 +69,12 @@ a {
     transition: .5s;
     z-index: var(--z-fixed);
 }
-
+/* 프로필 */
+.profile_img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
 /* NAV */
 .nav {
     height: 100%;
@@ -53,10 +84,14 @@ a {
     overflow: hidden;
 }
 
+p.nav__name {
+    padding-right: 20px;
+    padding-left: 30px;
+}
+
 .nav__brand {
     display: grid;
-    grid-template-columns: max-content max-content;
-    justify-content: space-between;
+    grid-template-columns: max-content max-content max-content;
     align-items: center;
     margin-bottom: 2rem;
 }
@@ -69,11 +104,13 @@ a {
 }
 /* 여기에다가 이름 넣던가 */
 .nav__logo {
-    padding: 1rem;
-    border-radius: 15%;
-    background-color: #fff3f0;
-    color: #634f63;
+    width: 100%;
+    padding: 0rem;
     font-weight: 600;
+}
+
+p {
+    color: #fff3f0;
 }
 
 .nav__link {

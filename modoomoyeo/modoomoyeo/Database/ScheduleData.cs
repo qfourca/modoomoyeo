@@ -4,7 +4,7 @@ namespace modoomoyeo.Database
 {
     public class ScheduleData
     {
-        public ScheduleData(string Name, string Owner, string Contents, DateTime End, int Access)
+        public ScheduleData(string Name, int Owner, string Contents, DateTime End, int Access)
         {
             name = Name;
             owner = Owner;
@@ -13,7 +13,7 @@ namespace modoomoyeo.Database
             end = End;
             access = Access;
         }
-        public ScheduleData(string Name, string Owner, string Contents, DateTime Begin, DateTime End, int Access)
+        public ScheduleData(string Name, int Owner, string Contents, DateTime Begin, DateTime End, int Access)
         {
             name = Name;
             owner = Owner;
@@ -24,7 +24,7 @@ namespace modoomoyeo.Database
         }
         private DBConnnection? context;
         public string? name { get; set; }
-        public string? owner { get; set; }
+        public int owner { get; set; }
         public string? contents { get; set; }
         public DateTime begin { get; set; }
         public DateTime end { get; set; }

@@ -1,0 +1,40 @@
+﻿
+
+.h1 {
+    font-size: 3rem;
+}
+
+.body {
+    padding-left: 150px;
+    background-color: #FFF3F0;
+    font-family: "Song Myung";
+    font-size: 1.2rem;
+}
+
+.p, .h1, .h2, .h3 {
+    color: #634F47;
+}
+
+.h2 {
+    text-decoration-line: none;
+}
+
+    .h2:hover {
+        text-decoration-line: underline;
+    }
+
+*::-webkit-scrollbar {
+    width: 20px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #634F47;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+}
+
+*::-webkit-scrollbar-track {
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px;
+}

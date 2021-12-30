@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+   <link href="~/css/insert.css" rel="stylesheet" type="text/css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+<title>write</title>
+</head>
+
+<body class="write_body">
+
+   <div class="write_align">
+      <div class="box" style="background-color:#827068">
+         <form enctype="multipart/form-data" method='post' action='/Schedule/Post'>
+          <div class="field">
+             <div class="control">                 
+                  <input class="input" type="text" name="title" placeholder="제목 입력">
+                  <br>
+                  <br>
+                  <input id="FileUpload_FormFile" type="file" name="image_file" />
+                  <br>
+                  <br>
+                  <input class="input" type="text" name="contents" placeholder="내용 입력" style="height:150px">
+             </div>
+           </div>
+           <br>
+           <button class="button is-fullwidth" type="submit" style="background-color:#83B9BF">게시</button>
+         </form>
+         <br>         
+         <label class="checkbox has-text-white">
+              <input type="checkbox">
+                 학생 공개 입니까?
+         </label>
+         
+      </div>
+   </div>
+</body>
+</html>
+<!--
+<form method = 'post' action='/Schedule/Post'>
+    <input type="text" name="title" class="form-control" placeholder="제목"/>
+    <input type="text" name="contents" class="form-control" placeholder="내용"/>
+    <button type="submit">insert</button>
+</form>
+-->
+
+<script>
+  async function AJAXSubmit (oFormElement) {
+    var resultElement = oFormElement.elements.namedItem("result");
+    const formData = new FormData(oFormElement);
+
+    try {
+    const response = await fetch(oFormElement.action, {
+      method: 'POST',
+      body: formData
+    });
+
+    if (response.ok) {
+      window.location.href = '/Home/test';
+    }
+
+    resultElement.value = 'Result: ' + response.status + ' ' + 
+      response.statusText;
+    } catch (error) {
+      console.error('Error:', error);
+    }
+
+  }
+</script>

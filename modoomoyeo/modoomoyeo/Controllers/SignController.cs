@@ -92,7 +92,7 @@ namespace Ducademy.Controllers
             return Redirect("/");
         }
 
-        public IActionResult Myinfo()
+        public IActionResult Fix()
         {
             return View();
         }

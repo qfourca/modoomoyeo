@@ -2,11 +2,45 @@
     ViewData["Title"] = "Schedule";
 }
 
-@model List<modoomoyeo.Database.ScheduleData>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/schedule.css">
+    <title>Calendar</title>
+</head>
+<body class = "calendar_bady">
+    
+    <div class="calendarall">
+          <div class="calendar">
+            <div class="header">
+              <div class="year-month"></div>
+              <div class="nav">
+                <button class="nav-btn go-prev" onclick="prevMonth()">&lt;</button>
+                <button class="nav-btn go-today" onclick="goToday()">Today</button>
+                <button class="nav-btn go-next" onclick="nextMonth()">&gt;</button>
+              </div>
+            </div>
+            <div class="main">
+              <div class="days">
+                <div class="day">일</div>
+                <div class="day">월</div>
+                <div class="day">화</div>
+                <div class="day">수</div>
+                <div class="day">목</div>
+                <div class="day">금</div>
+                <div class="day">토</div>
+              </div>
+              <div class="dates"></div>
+            </div>
+          </div>
+          <script src="~/js/schedule.js"></script>
+        </div>
 
-<ul>
-@foreach (var data in @Model)
-{
-    <li>@data.name  @data.contents  @data.owner </li>
-}
-</ul>
+     <a asp-area="" asp-controller="Home" asp-action="Insertschedule">
+    <img class="plusbutton" src="~/img/test/button.png">
+    </a>
+</body>
+</html>

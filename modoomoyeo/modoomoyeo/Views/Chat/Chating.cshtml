@@ -149,16 +149,20 @@ div.inner::-webkit-scrollbar-track {
 p{
     margin-bottom: 5px;
 }
+.chating_box{
+    padding-left: 40%;
+}
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<input type="hidden" value="@User.FindFirst("userid").Value", id="myid" readonly/>
-<input type="hidden" value="@ViewData["target"]", id="targetid" readonly/>
-<div class="chat_wrap">
-    <div class="inner"></div>
-    <input type="text" class="mymsg" placeholder="내용 입력">
+<div class="chating_box">
+    <input type="hidden" value="@User.FindFirst("userid").Value", id="myid" readonly/>
+    <input type="hidden" value="@ViewData["target"]", id="targetid" readonly/>
+    <div class="chat_wrap">
+        <div class="inner"></div>
+        <input type="text" class="mymsg" placeholder="내용 입력">
+    </div>
 </div>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"/>
 <script src="https://code.jquery.com/jquery-1.8.3.min.js" integrity="sha256-YcbK69I5IXQftf/mYD8WY0/KmEDCv1asggHpJk1trM8=" crossorigin="anonymous"></script>
 <script src="~/lib/signalr/dist/browser/signalr.js"></script>

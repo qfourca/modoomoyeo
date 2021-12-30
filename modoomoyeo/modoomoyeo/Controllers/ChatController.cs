@@ -21,6 +21,14 @@ namespace modoomoyeo.Controllers
             UserQurey db = HttpContext.RequestServices.GetService(typeof(UserQurey)) as UserQurey;
             return View(db.findUserAll());
         }
+        public IActionResult Mentors()
+        {
+            if (!User.Identity.IsAuthenticated)
+                return Redirect("/Sign/Signin");
+
+            UserQurey db = HttpContext.RequestServices.GetService(typeof(UserQurey)) as UserQurey;
+            return View(db.findMentors());
+        }
         [HttpPost]
         [Route("/Chat/Chatting")]
         public IActionResult ChattingRequest()
@@ -30,5 +38,9 @@ namespace modoomoyeo.Controllers
             return View("Chating");
         }
 
+        public IActionResult Sum()
+        {
+            return View();
+        }
     }
 }

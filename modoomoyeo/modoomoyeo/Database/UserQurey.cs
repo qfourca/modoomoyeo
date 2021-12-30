@@ -35,14 +35,16 @@ namespace modoomoyeo.Database
 
         public string signup(Userdata userdata)
         {
-            if(exist("Email", userdata.Email))
+            if (exist("Email", userdata.Email))
             {
                 return "Email Already Exist";
             }
             else
             {
-                string SQLqurey = $"insert into user (Email, password, name)values(" +
-                    $"'{userdata.Email}','{convertPassword(userdata.Password)}','{userdata.Name}')";
+                string test = "{" + '"' + "name" + '"' + " : " + '"' + "test" + '"' + '}';
+                Console.Write(test);
+                string SQLqurey = $"insert into user (Email, password, name, info)values(" +
+                    $"'{userdata.Email}','{convertPassword(userdata.Password)}','{userdata.Name}', '{test}')";
                 using (MySqlConnection conn = GetConnection())
                 {
                     try
@@ -179,6 +181,33 @@ namespace modoomoyeo.Database
             }
             return ret;
         } 
+
+        public List<MentorData> findMentors()
+        {
+            List<MentorData> ret = new List<MentorData>();
+            string SQLqurey = $"select * from Mentor;";
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand command = new MySqlCommand(SQLqurey, conn);
+                using (var reader = command.ExecuteReader())
+                {
+                    while(reader.Read())
+                    {
+                        int id = reader.GetInt32("id");
+                        ret.Add(new MentorData(
+                                            id,
+                                            idToName(id),
+                                            reader.GetString("tech"),
+                                            reader.GetString("phone"),
+                                            reader.GetString("github")));
+                    }
+                }
+                conn.Close();
+            }
+            return ret;
+
+        }
         //특정 타입에 특정 이름을 가진 것이 테이블에 존재하는지 검사하는 함수
         private string convertPassword(string password)
         {

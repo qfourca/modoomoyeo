@@ -1,9 +1,45 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@using modoomoyeo.Database;
+@model List<PostData>
 
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="~/css/index.css">
+
+<div style="display: inline-block;"><img class="main_notice" src="~/img/test/main1.png"></div>
+    
+<div class="spacer"></div>
+
+<body>
+    <div style="width: 100%; display: flex; justify-content: center;">
+        <div class="box_wrapper">
+        @{int cnt = 0;}
+        @foreach (var data in Model)
+        {
+
+                ViewData["link"] = $"img/posts/{data.id}.png";
+            <div class="box" style="background-color:#634F47; width:350px; height: 505px;">
+                <img class="woman" src="~/img/test/woman.png" width="70" height="70">
+                <!--<img class="lock" src="~/img/test/lock.png" width="30" height="30">-->
+                <center>
+                    <font size="5" class="has-text-white">@data.name</font>
+                </center>
+                <img class="picture" src="@ViewData["link"]" width="300" height="300">
+                <p class="has-text-white">@data.time</p>
+            </div>
+        }
+        </div>
+    </div>
+</body>
+    <a asp-area="" asp-controller="Home" asp-action="Insert">
+    <img class="plusbutton" src="~/img/test/button.png">
+    </a>
+
+<!--
 <form method = 'post' action='/Schedule/Post'>
     <input type="text" name="title" class="form-control" placeholder="제목"/>
     <input type="text" name="contents" class="form-control" placeholder="내용"/>
     <button type="submit">insert</button>
 </form>
+-->

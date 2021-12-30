@@ -4,16 +4,34 @@
 @using modoomoyeo.Database;
 @model List<Userdata>
 
-<ul>
+    <style>
+        .a{
+            margin-right: auto;
+            margin-left: auto;
+        }
+    </style>
+
+<div id="body-pd">
+ <ul>
 <form method = 'post' action='/Chat/Chatting'>
 <li><button type="submit" name="id" value="0">ALL</button></li>
 </form>
-@foreach (var data in @Model)
-{
-    <li>
-    <form method = 'post' action='/Chat/Chatting'>
-        <button type="submit" name="id" value="@data.id">@data.Name</button>
-    </form>
-    </li>
-}
+<div class='a'>
+    <table>
+           <tr>
+             <th class="has-text-white">Name</th>
+             <th class="has-text-white">Chat</th> 
+           </tr>
+           @foreach (var data in @Model)
+            {
+            <tr>
+                 <td class="has-text-white">@data.Name</td>    
+                 <td><a asp-area="" asp-controller="Chat" asp-action=""> <form method = 'post' action='/Chat/Chatting'>
+                <button type="submit" name="id" value="@data.id"><ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon></button></form></a></td>
+            </tr>
+            }
+           
+    </table>
+    </div>
 </ul>
+</div>

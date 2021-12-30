@@ -1,5 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
 
 namespace modoomoyeo.Database
 {
@@ -12,8 +11,8 @@ namespace modoomoyeo.Database
         public string insertSchedule(ScheduleData schedule)
         {
             string SQLqurey = $"insert into schedule" +
-                $" values('{schedule.name}', '{schedule.owner}', '{schedule.contents}'," +
-                $"'{schedule.begin:yyyy/MM/dd HH/mm/ss}','{schedule.end:yyyy/MM/dd HH/mm/ss}'," +
+                $" values('{schedule.name}', {schedule.owner}, '{schedule.contents}'," +
+                $"'{schedule.begin:yyyy/MM/dd}','{schedule.end:yyyy/MM/dd}'," +
                 $" '{schedule.access}')";
             using (MySqlConnection conn = GetConnection())
             {
@@ -48,7 +47,7 @@ namespace modoomoyeo.Database
                     {
                         scheduleDatas.Add(new ScheduleData(
                             reader.GetString("name"),
-                            reader.GetString("owner"),
+                            reader.GetInt32("owner"),
                             reader.GetString("contents"),
                             DateTime.Parse(reader.GetString("begintime")),
                             DateTime.Parse(reader.GetString("endtime")),
@@ -74,7 +73,7 @@ namespace modoomoyeo.Database
                     {
                         scheduleDatas.Add(new ScheduleData(
                             reader.GetString("name"),
-                            reader.GetString("owner"),
+                            reader.GetInt32("owner"),
                             reader.GetString("contents"),
                             DateTime.Parse(reader.GetString("begintime")),
                             DateTime.Parse(reader.GetString("endtime")),
@@ -109,7 +108,10 @@ namespace modoomoyeo.Database
             }
             return ret;
         }
-        //로그인 함수 로그인에 성공하면 true를 반환
+
+        /// <summary>
+        /// 로그인 함수 로그인에 성공하면 true를 반환
+        /// </summary>
         public string findData(string primary_key, string datatype)
         {
             string SQLqurey = $"select {datatype} from user where email = '{primary_key}'";

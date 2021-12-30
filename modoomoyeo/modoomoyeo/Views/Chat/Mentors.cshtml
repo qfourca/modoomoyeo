@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>chat bar</title>
+
+
+   <link href="~/css/chat/mentors.css" rel="stylesheet" type="text/css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+</head>
+
+@using modoomoyeo.Database;
+@model List<MentorData>
+
+<body class="chat_bar_body">
+   <div class="chat" width: 500px; height: 100%;">
+      <br>
+        <center>
+         <table>
+           <tr>
+             <th class="has-text-white">Name</th>
+             <th class="has-text-white">Can</th>
+             <th class="has-text-white">Phone</th>
+             <th class="has-text-white">Github</th> 
+             <th class="has-text-white">Chat</th> 
+           </tr>
+           @foreach (var data in @Model)
+            {
+            <tr>
+                 <td class="has-text-white">@data.name</td>    
+                 <td class="has-text-white">@data.tech</td> 
+                 <td class="has-text-white">@data.phone</td>
+                 <td><a href="@data.github"><img src="~/img/github.png" width="63" height="50"/></a></td>
+                 <td><a asp-area="" asp-controller="Chat" asp-action=""> <form method = 'post' action='/Chat/Chatting'>
+                <button type="submit" name="id" value="@data.id"><ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon></button></form></a></td>
+            </tr>
+            }
+           
+         </table>
+      </center>
+      
+   </div>
+</body>
+
+</html>

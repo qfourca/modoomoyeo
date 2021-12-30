@@ -1,0 +1,19 @@
+﻿@charset "UTF-8";
+
+.write_body {
+    background-color: #FFF3F0;
+    text-align: center;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.write_align {
+    width: 500px;
+    height: 700px;
+    padding-top: 500px;
+    position: absolute;
+    top: 50%;
+    left: 53%;
+    transform: translate(-50%,-50%);
+}

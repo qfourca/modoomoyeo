@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="~/css/site.css">
     @await RenderSectionAsync("Style", required: false)
+    <link rel="stylesheet" href="~/css/site.css">
+
     <title>@ViewData["Title"] - modoomoyeo</title>
 </head>
-
-    <body id="body-pd">
+    <body>
         <div class="l-navbar" id="navbar">
             <nav class="nav">
                 <div>
@@ -19,7 +19,7 @@
                         <!-- 아이콘 -->
                         <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
                         <!-- 넘기는 거 넣어 -->
-                        <a href="#" class="nav__logo">@User.Identity.Name</a>
+                        <p style = "display:inline" class="nav__name">@User.Identity.Name</p><img class="profile_img" src="~/img/zerohe.png"></img>
                     </div>
                     <div class="nav__list">
                     @if (User.Identity.IsAuthenticated)
@@ -42,13 +42,29 @@
                         <!-- 누르면 이동 -->
                         <a class="nav__link" asp-area="" asp-controller="Chat" asp-action="Index">
                             <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
-                            <span class="nav_name">Chating</span> 
+                            <span class="nav_name">Chat</span> 
+                        </a>
+
+                        <a class="nav__link" asp-area="" asp-controller="Chat" asp-action="Mentors">
+                            <ion-icon  name="school-outline" class="nav__icon"></ion-icon>
+                            <span class="nav_name">Mentors</span> 
                         </a>
 
                         <!-- 누르면 이동 -->
                         <a class="nav__link" asp-area="" asp-controller="Canvas" asp-action="Index">
-                            <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+                            <ion-icon name="pencil-outline" class="nav__icon"></ion-icon>
                             <span class="nav_name">Canvas</span>
+                        </a>
+
+                        <!-- 누르면 이동 -->
+                        <a class="nav__link" asp-area="" asp-controller="Home" asp-action="Wiki">
+                            <ion-icon name="book-outline" class="nav__icon"></ion-icon>
+                            <span class="nav_name">Wiki</span>
+                        </a>
+                        <!-- 누르면 이동 -->
+                        <a class="nav__link" asp-area="" asp-controller="Sign" asp-action="Fix">
+                            <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+                            <span class="nav_name">My Page</span>
                         </a>
                     }
                     else
@@ -60,9 +76,9 @@
 
 
                         <!-- 누르면 이동 -->
-                        <a class="nav__link" asp-area="" asp-controller="Sign" asp-action="Signout">
+                        <a class="nav__link" asp-area="" asp-controller="Sign" asp-action="Signup">
                             <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
-                            <span class="nav_name">Signout</span> 
+                            <span class="nav_name">Signup</span> 
                         </a>
                     }
                     </div>
@@ -79,7 +95,7 @@
 
 
         <div class="container">
-            <main role="main" class="pb-3">
+            <main role="main">
                 @RenderBody()
             </main>
         </div>
@@ -89,5 +105,3 @@
         @await RenderSectionAsync("Scripts", required: false)
     </body>
 </html>
-
-
